@@ -5,7 +5,7 @@ require 'byebug'
 
 class Display
   def initialize(board)
-    @cursor = Cursor.new([0,0],board)
+    @cursor = Cursor.new([1,4],board)
     @board = board
   end
   def render
