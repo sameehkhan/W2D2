@@ -40,6 +40,11 @@ class Board
     self[start_pos] = NullPiece.new
   end
 
+  def valid_pos?(pos)
+    return true if (0..7).include?(pos[0]) && (0..7).include?(pos[1])
+    false
+  end
+
 
 end
 
@@ -51,12 +56,12 @@ class Piece
   end
 
   def inspect
-    "#{self.class}"
-
+    "♚"
   end
 
   def to_s
-    "#{self.class}"
+    " ♚ "
+
   end
 
 
@@ -68,6 +73,10 @@ class NullPiece < Piece
   def initialize
 
 
+  end
+
+  def to_s
+    " 🀫 "
   end
 end
 
