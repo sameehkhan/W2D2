@@ -31,13 +31,12 @@ class Board
   end
 
   def move_piece(start_pos, end_pos)
-    
+
     raise "No piece at this position!" if self[start_pos].is_a?(NullPiece)
     raise "You cannot move there!" unless self[end_pos].is_a?(NullPiece)
 
     self[end_pos] = self[start_pos]
     self[start_pos] = NullPiece.new
-    self.grid
   end
 
 
