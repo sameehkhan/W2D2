@@ -1,5 +1,5 @@
 class Piece
-attr_reader :color, :pos
+attr_reader :color, :pos :symbol
 
   def initialize(color, board, pos)
     @color = color
@@ -57,6 +57,11 @@ class Pawn < Piece
   end
 
   def forward_dir
+    if self.color == :black
+      return 1
+    else
+      return -1
+    end
   end
 
   def forward_steps

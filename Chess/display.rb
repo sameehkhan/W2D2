@@ -39,9 +39,9 @@ class Display
     if @cursor.cursor_pos == [i,j]
       :red
     elsif (i + j).odd?
-      :yellow
-    else
       :blue
+    else
+      :white
     end
 
   end
