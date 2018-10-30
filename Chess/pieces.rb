@@ -75,42 +75,28 @@ end
 class Rook < Piece
   include Slideable
   def symbol
-    if self.color == :black
-      " ♜ "
-    else
-      ' ♖ '
+    self.color == :black ? " ♜ " : ' ♖ '
   end
 end
 
 class Bishop < Piece
   include Slideable
   def symbol
-    if self.color == :black
-      " ♝ "
-    else
-      ' ♗ '
-    end
+    self.color == :black ? " ♝ " : ' ♗ '
   end
 end
 
 class Queen < Piece
   include Slideable
   def symbol
-    if self.color == :black
-      " ♛ "
-    else
-      " ♕ "
-    end
+    self.color == :black ? " ♛ " : " ♕ "
   end
 end
 
 class Knight < Piece
   include SteppingPiece
   def symbol
-    if self.color == :black
-      " ♞ "
-    else
-      " ♘ "
+    self.color == :black ? " ♞ " : " ♘ "
    end
   end
 end
@@ -118,11 +104,7 @@ end
 class King < Piece
   include SteppingPiece
   def symbol
-    if self.color == :black
-      " ♚ "
-    else
-      ' ♔ '
-    end
+    self.color == :black ? " ♚ " : ' ♔ '
   end
 end
 
