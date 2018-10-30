@@ -1,5 +1,5 @@
 require 'byebug'
-
+require_relative 'pieces'
 class Board
 
   attr_accessor :grid
@@ -11,7 +11,11 @@ class Board
   def board_setup
     (0...@grid.length).each do |row|
       (0...@grid.length).each do |col|
-        if (0..1).include?(row) || (6..7).include?(row)
+        if row == 1 || row == 6
+          @grid[row][col] = Pawn.new
+        elsif row == 0 && col == 0 || row == 0 && col == 7 || row == 7 && col == 0 || row == 7 && col == 7
+          @grid[row][col] = Rook.new
+        elsif (0..1).include?(row) || (6..7).include?(row)
           @grid[row][col] = Piece.new
         else
           @grid[row][col] = NullPiece.new

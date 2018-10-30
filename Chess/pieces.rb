@@ -1,7 +1,7 @@
 require_relative 'board'
 
 class Piece
-attr_reader :color, :pos :symbol
+attr_reader :color, :pos, :symbol
 
   def initialize(color, board, pos)
     @color = color
@@ -43,6 +43,13 @@ end
 
 
 class Pawn < Piece
+  def initialize
+  end
+
+  def to_s
+    " ♟ "
+  end
+
   def symbol
     self.color == :black ? " ♟ " : ' ♙ '
   end
@@ -78,93 +85,98 @@ class Pawn < Piece
 end
 
 class Rook < Piece
-  include Slideable
+  # include Slideable
+  def initialize
+  end
   def symbol
     self.color == :black ? " ♜ " : ' ♖ '
   end
-end
 
-class Bishop < Piece
-  include Slideable
-  def symbol
-    self.color == :black ? " ♝ " : ' ♗ '
+  def to_s
+    " ♜ "
   end
 end
 
-class Queen < Piece
-  include Slideable
-  def symbol
-    self.color == :black ? " ♛ " : " ♕ "
-  end
-end
-
-class Knight < Piece
-  include SteppingPiece
-  def symbol
-    self.color == :black ? " ♞ " : " ♘ "
-   end
-  end
-end
-
-class King < Piece
-  include SteppingPiece
-  def symbol
-    self.color == :black ? " ♚ " : ' ♔ '
-  end
-end
-
-class NullPiece < Piece
-  include Singleton
-  def symbol
-    " 🀫 "
-  end
-end
-
-module SlidingPiece
-
-  def moves
-    move_dirs
-  end
-
-  def horizontal_dirs
-    HORIZONTAL_DIRS
-  end
-
-  def diagonal_dirs
-    DIAGONAL_DIRS
-  end
-
-  private
-
-  HORIZONTAL_DIRS = [
-    [0,1], #changes col
-    [0,-1], #changes col
-    [1,0], #changes row
-    [-1,0] #changes row
-  ]
-  DIAGONAL_DIRS = [
-    [1,1],
-    [1,-1]
-    [-1,1]
-    [-1,-1]
-  ]
-
-  def move_dirs
-  end
-
-  def grow_unblocked_moves_in_dir(dx,dy)
-  end
-
-end
-
-module SteppingPiece
-
-  def moves
-  end
-
-  private
-  def move_diffs
-
-  end
-
-end
+# class Bishop < Piece
+#   include Slideable
+#   def symbol
+#     self.color == :black ? " ♝ " : ' ♗ '
+#   end
+# end
+#
+# class Queen < Piece
+#   include Slideable
+#   def symbol
+#     self.color == :black ? " ♛ " : " ♕ "
+#   end
+# end
+#
+# class Knight < Piece
+#   include SteppingPiece
+#   def symbol
+#     self.color == :black ? " ♞ " : " ♘ "
+#   end
+# end
+#
+# class King < Piece
+#   include SteppingPiece
+#   def symbol
+#     self.color == :black ? " ♚ " : ' ♔ '
+#   end
+# end
+#
+# class NullPiece < Piece
+#   include Singleton
+#   def symbol
+#     " 🀫 "
+#   end
+# end
+#
+# module SlidingPiece
+#
+#   def moves
+#     move_dirs
+#   end
+#
+#   def horizontal_dirs
+#     HORIZONTAL_DIRS
+#   end
+#
+#   def diagonal_dirs
+#     DIAGONAL_DIRS
+#   end
+#
+#   private
+#
+#   HORIZONTAL_DIRS = [
+#     [0,1], #changes col
+#     [0,-1], #changes col
+#     [1,0], #changes row
+#     [-1,0] #changes row
+#   ]
+#   DIAGONAL_DIRS = [
+#     [1,1],
+#     [1,-1],
+#     [-1,1],
+#     [-1,-1]
+#   ]
+#
+#   def move_dirs
+#   end
+#
+#   def grow_unblocked_moves_in_dir(dx,dy)
+#   end
+#
+# end
+#
+# module SteppingPiece
+#
+#   def moves
+#   end
+#
+#   private
+#   def move_diffs
+#
+#   end
+#
+# end
