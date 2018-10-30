@@ -83,10 +83,13 @@ class Cursor
       update_pos(MOVES[key])
       return nil
     when :ctrl_c
-      exit(true) #exit successfully
+      Process.exit(0) #exit successfully
     end
   end
 
   def update_pos(diff)
+    @cursor_pos = diff if @cursor_pos
   end
+
+
 end

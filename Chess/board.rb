@@ -5,6 +5,7 @@ class Board
   attr_accessor :grid
   def initialize
     @grid = Array.new(8) { Array.new(8) }
+    board_setup
   end
 
   def board_setup
@@ -51,6 +52,11 @@ class Piece
 
   def inspect
     "#{self.class}"
+
+  end
+
+  def to_s
+    "#{self.class}"
   end
 
 
@@ -67,8 +73,8 @@ end
 
 if __FILE__ == $PROGRAM_NAME
   board = Board.new
-  board.board_setup
   board.grid
-  p board.move_piece([0,0],[4,4])
+  board.move_piece([0,0],[4,4])
+  p board.grid
 
 end
