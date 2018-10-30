@@ -79,7 +79,16 @@ class Cursor
     case key
     when :return || :space
       return @cursor_pos
-    when :left || :right || :up || :down
+    when :left
+      update_pos(MOVES[key])
+      return nil
+    when :right
+      update_pos(MOVES[key])
+      return nil
+    when :up
+      update_pos(MOVES[key])
+      return nil
+    when :down
       update_pos(MOVES[key])
       return nil
     when :ctrl_c
@@ -88,8 +97,7 @@ class Cursor
   end
 
   def update_pos(diff)
-    @cursor_pos = diff if @cursor_pos
+    @cursor_pos = [@cursor_pos[0] + diff[0], @cursor_pos[1] + diff[1]]
   end
-
 
 end
