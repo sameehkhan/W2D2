@@ -9,11 +9,20 @@ class Display
     @board = board
   end
   def render
+    system("clear")
     build_board.each {|row| puts row.join}
   end
 
+  def testing
+    while true
+      render
+      # debugger
+      @cursor.get_input
+    end
+  end
+
   def build_board
-    debugger
+
     @board.grid.map.with_index do |row, i|
       display_row(row, i)
     end
@@ -42,5 +51,5 @@ end
 if __FILE__ == $PROGRAM_NAME
   board = Board.new
   display = Display.new(board)
-  p display.render
+  display.testing
 end
