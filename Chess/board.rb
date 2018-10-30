@@ -8,6 +8,8 @@ class Board
     board_setup
   end
 
+  end_row = [rook, knight, bishop, king, queen, bishop, knight, rook]
+
   def board_setup
     (0...@grid.length).each do |row|
       (0...@grid.length).each do |col|

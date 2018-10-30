@@ -97,26 +97,31 @@ class Rook < Piece
   end
 end
 
-# class Bishop < Piece
-#   include Slideable
-#   def symbol
-#     self.color == :black ? " ♝ " : ' ♗ '
-#   end
-# end
-#
-# class Queen < Piece
-#   include Slideable
-#   def symbol
-#     self.color == :black ? " ♛ " : " ♕ "
-#   end
-# end
-#
-# class Knight < Piece
-#   include SteppingPiece
-#   def symbol
-#     self.color == :black ? " ♞ " : " ♘ "
-#   end
-# end
+class Bishop < Piece
+  # include Slideable
+  def symbol
+    self.color == :black ? " ♝ " : ' ♗ '
+  end
+end
+
+class Queen < Piece
+  include Slideable
+  def symbol
+    self.color == :black ? " ♛ " : " ♕ "
+  end
+end
+
+class Knight < Piece
+  # include SteppingPiece
+  def initialize
+  end
+  def symbol
+    self.color == :black ? " ♞ " : " ♘ "
+  end
+  def to_s
+    " ♞ "
+  end
+end
 #
 # class King < Piece
 #   include SteppingPiece
