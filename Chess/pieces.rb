@@ -14,7 +14,7 @@ attr_reader :color, :pos :symbol
   end
 
   def empty?
-
+    @pos == NullPiece
   end
 
   def valid_moves
@@ -73,6 +73,7 @@ class Pawn < Piece
 end
 
 class Rook < Piece
+  include Slideable
   def symbol
     if self.color == :black
       " ♜ "
@@ -82,6 +83,7 @@ class Rook < Piece
 end
 
 class Bishop < Piece
+  include Slideable
   def symbol
     if self.color == :black
       " ♝ "
@@ -92,6 +94,7 @@ class Bishop < Piece
 end
 
 class Queen < Piece
+  include Slideable
   def symbol
     if self.color == :black
       " ♛ "
@@ -102,6 +105,7 @@ class Queen < Piece
 end
 
 class Knight < Piece
+  include SteppingPiece
   def symbol
     if self.color == :black
       " ♞ "
@@ -112,6 +116,7 @@ class Knight < Piece
 end
 
 class King < Piece
+  include SteppingPiece
   def symbol
     if self.color == :black
       " ♚ "
@@ -122,6 +127,7 @@ class King < Piece
 end
 
 class NullPiece < Piece
+  include Singleton
   def symbol
     " 🀫 "
   end
@@ -140,6 +146,10 @@ module SlidingPiece
   end
 
   private
+
+  HORIZONTAL_DIRS = (0..7).to_a
+  DIAGONAL_DIRS = (0..7).to_a
+
   def move_dirs
   end
 
