@@ -3,9 +3,9 @@ require_relative 'board'
 class Piece
 attr_reader :color, :pos, :symbol
 
-  def initialize(color, board, pos)
+  def initialize(color, pos)
     @color = color
-    @board = board
+    # @board = board
     @pos = []
 
   end
@@ -86,7 +86,9 @@ end
 
 class Rook < Piece
   # include Slideable
-  def initialize
+  def initialize(color, pos)
+    @color = color
+    @pos = []
   end
   def symbol
     self.color == :black ? " ♜ " : ' ♖ '
@@ -95,25 +97,52 @@ class Rook < Piece
   def to_s
     " ♜ "
   end
+  def inspect
+    " ♜ "
+  end
+
 end
 
-class Bishop < Piece
+class Bishop < Piece 
   # include Slideable
+  def initialize(color, pos)
+    @color = color
+    @pos = []
+  end
   def symbol
     self.color == :black ? " ♝ " : ' ♗ '
+  end
+  def to_s
+    " ♝ "
+  end
+
+  def inspect
+    " ♝ "
   end
 end
 
 class Queen < Piece
-  include Slideable
+  # include Slideable
+  def initialize(color, pos)
+    @color = color
+    @pos = []
+  end
   def symbol
     self.color == :black ? " ♛ " : " ♕ "
+  end
+  def to_s
+    " ♛ "
+  end
+  def inspect
+    " ♛ "
   end
 end
 
 class Knight < Piece
   # include SteppingPiece
-  def initialize
+  def initialize(color, pos)
+    @color = color
+    @pos = []
   end
   def symbol
     self.color == :black ? " ♞ " : " ♘ "
@@ -121,14 +150,27 @@ class Knight < Piece
   def to_s
     " ♞ "
   end
+  def inspect
+    " ♞ "
+  end
 end
 #
-# class King < Piece
-#   include SteppingPiece
-#   def symbol
-#     self.color == :black ? " ♚ " : ' ♔ '
-#   end
-# end
+class King < Piece
+  # include SteppingPiece
+  def initialize(color, pos)
+    @color = color
+    @pos = []
+  end
+  def symbol
+    self.color == :black ? " ♚ " : ' ♔ '
+  end
+  def to_s
+    " ♚ "
+  end
+  def inspect
+    " ♚ "
+  end
+end
 #
 # class NullPiece < Piece
 #   include Singleton

@@ -8,15 +8,15 @@ class Board
     board_setup
   end
 
-  end_row = [rook, knight, bishop, king, queen, bishop, knight, rook]
+  end_row = [Rook, Knight, Bishop, King, Queen, Bishop, Knight, Rook]
 
   def board_setup
     (0...@grid.length).each do |row|
       (0...@grid.length).each do |col|
         if row == 1 || row == 6
           @grid[row][col] = Pawn.new
-        elsif row == 0 && col == 0 || row == 0 && col == 7 || row == 7 && col == 0 || row == 7 && col == 7
-          @grid[row][col] = Rook.new
+        elsif row == 0 || row == 7
+          @grid[row][col] = populate_back_row(row,col)
         elsif (0..1).include?(row) || (6..7).include?(row)
           @grid[row][col] = Piece.new
         else
@@ -24,6 +24,13 @@ class Board
         end
       end
     end
+  end
+
+  def populate_back_row(row,col)
+    end_row = [Rook, Knight, Bishop, King, Queen, Bishop, Knight, Rook]
+    end_row.reverse! if row == 7
+    color = (row == 0) ? :black : :white
+    end_row[col].new(color,[row,col])
   end
 
   def []=(pos, value)
